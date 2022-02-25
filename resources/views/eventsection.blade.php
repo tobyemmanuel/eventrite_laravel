@@ -38,47 +38,23 @@
             </div>
         </div>
         <div class="row mx-md-5 mx-sm-2 px-md-3 px-sm-2 events-group">
-            <div class="col-md-3 col-sm-3">
-                <div class="card">
-                    <img src="assets/images/event-one.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Being Free: Arewa Me, Too Reading Room</h5>
-                            <h6 class="card-subtitle mb-2 text-time">Sun, Feb 13, 8:00 AM</h6>                                    
-                            <h6 class="card-subtitle mb-2 text-address">Lighthouse Church Kaduna • Kaduna, KD </h6>
-                            <h6 class="card-subtitle mb-2 text-price">Free</h6>
-                            <p class="card-text text-creator">apexart</p>
-                            <p class="card-text text-traction"><i class="fa fa-users"></i> 75 followers</p>
-                        </div>
-                       
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-3">
-                <div class="card">
-                    <img src="assets/images/event-two.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Sunday Service at the Lighthouse. (1st service)</h5>
-                            <h6 class="card-subtitle mb-2 text-time">Sun, Feb 13, 8:00 AM</h6>
-                            <h6 class="card-subtitle mb-2 text-address">Lighthouse Church Kaduna • Kaduna, KD </h6>
-                            <h6 class="card-subtitle mb-2 text-price">Free</h6>
-                            <p class="card-text text-creator">The Lighthouse Church, Kaduna</p>
-                            <p class="card-text text-traction"><i class="fa fa-users"></i> 75 followers</p>
-                        </div>
-                       
-                </div>
-            </div>
+            @foreach ($event as $events)
             <div class="col-md-3 col-sm-3">
                 <div class="card mb">
-                    <img src="assets/images/event-three.jpg" class="card-img-top" alt="...">
+                    <img src="event/{{ $events->eventBanner }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Sunday Service at the Lighthouse. (2nd service)</h5>
-                            <h6 class="card-subtitle mb-2 text-time">Sun, Feb 13, 8:00 AM</h6>
+                            <h5 class="card-title">{{ $events->eventName }}</h5>
+                            <h6 class="card-subtitle mb-2 text-time">{{ $events->eventStartDate }} {{ $events->eventStartDateTime }}</h6>
                             <h6 class="card-subtitle mb-2 text-address">Lighthouse Church Kaduna • Kaduna, KD </h6>
-                            <h6 class="card-subtitle mb-2 text-price">Free</h6>
-                            <p class="card-text text-creator">The Lighthouse Church, Kaduna</p>
+                            <h6 class="card-subtitle mb-2 text-price">{{ $events->eventPrice }}</h6>
+                            <p class="card-text text-creator">{{ $events->eventLocation }}</p>
                             <p class="card-text text-traction"><i class="fa fa-users"></i> 75 followers</p>
                         </div>                 
                 </div>
             </div>
+            @endforeach
+            
+
             <div class="col-md-3 col-sm-3 ">
                 <div class="card event-info" ds-color="#ECDCE6">                  
                     <div class="card-body">
