@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [HomeController::class, 'redirect']);
+
+Route::get('/add_event_view', [AdminController::class, 'add_view']);
+
+Route::post('/upload_event', [AdminController::class, 'upload']);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
