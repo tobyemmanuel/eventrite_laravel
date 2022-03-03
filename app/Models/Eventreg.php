@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Eventreg extends Model
 {
     use HasFactory;
-    protected $table = "events";
-    protected $primaryKey = "id"; 
-
+    protected $table = 'eventreg';
+    protected $fillable = ['regName', 'regEmail', 'regNoTickets'];
 }

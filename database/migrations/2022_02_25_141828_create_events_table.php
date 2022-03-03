@@ -25,6 +25,7 @@ class CreateEventsTable extends Migration
             $table->string('eventDesc', 5000)->nullable();
             $table->string('eventBanner')->nullable();
             $table->string('refund')->nullable();
+            $table->string('creator')->nullable();
             $table->timestamps();
         });
     }

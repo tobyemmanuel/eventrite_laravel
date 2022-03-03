@@ -24,8 +24,13 @@ Route::get('/home', [HomeController::class, 'redirect']);
 
 Route::get('/add_event_view', [AdminController::class, 'add_view']);
 
+Route::get('/manage_event_view', [AdminController::class, 'manage_event_view']);
+
 Route::post('/upload_event', [AdminController::class, 'upload']);
 
+Route::get('event/{id}', [HomeController::class, 'showEvent']);
+
+Route::post('/eventreg', [HomeController::class, 'eventReg'])->name('event.reg');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

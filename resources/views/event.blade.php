@@ -252,32 +252,62 @@
       </div>
 
       <!-- Modal body -->
+      <form id="eventregistration" name="eventregistration">
+          @csrf
       <div class="modal-body">
+     <div class="alert alert-success hide"  id="alert-msg"></div>
         <div class="form-group">
-            <label for="email">Your name:</label>
-            <input type="text" class="form-control" placeholder="Enter name" id="name">
+            <label for="name">Your name:</label>
+            <input type="text" class="form-control" placeholder="Enter name" id="regName">
         </div>
         <div class="form-group">
             <label for="email">Your Email address:</label>
-            <input type="email" class="form-control" placeholder="Enter email" id="email">
+            <input type="email" class="form-control" placeholder="Enter email" id="regEmail">
         </div>
         <div class="form-group">
             <label for="email">Number of tickets:</label>
-            <input type="text" class="form-control" placeholder="Enter number of ticket" id="ticket">
+            <input type="text" class="form-control" placeholder="Enter number of tickets" id="regNoTickets">
         </div>
+
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-      <button type="button" class="btn btn-success" >Register</button>
+      <button type="button" id="btn-save" class="btn btn-success" >Register</button>
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
-
+        </form>
     </div>
   </div>
 </div>
 <script src="{{asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{asset('assets/js/popper.min.js') }}"></script>
 <script src="{{asset('assets/js/bootstrap.min.js') }}"></script>
+<script>
+         jQuery(document).ready(function(){
+            $('#btn-save').click(function(e){
+               e.preventDefault();
+            let regName = $('#regName').val();
+            let regEmail = $('#regEmail').val();
+            let regNoTickets = $('#regNoTickets').val();
+            let _token = $('input[name=_token]').val();
+               $.ajax({
+                  url: "{{ route('event.reg') }}",
+                  method: 'post',
+                  data: {
+                     regName: regName,
+                     regEmail: regEmail,
+                     regNoTickets: regNoTickets,
+                     _token: _token
+                  },
+                  success: function(result){
+                     if(result.status == 1){
+                        $('#alert-msg').html(result.msg);
+
+                     }
+                  }});
+               });
+            });
+</script>
 </body>
 </html>

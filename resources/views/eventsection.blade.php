@@ -43,7 +43,7 @@
                 <div class="card mb">
                     <img src="event/{{ $events->eventBanner }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $events->eventName }}</h5>
+                            <h5 class="card-title"><a href="{{ url('event', $events->id) }}">{{ $events->eventName }}</a></h5>
                             <h6 class="card-subtitle mb-2 text-time">{{ $events->eventStartDate }} {{ $events->eventStartDateTime }}</h6>
                             <h6 class="card-subtitle mb-2 text-address">Lighthouse Church Kaduna • Kaduna, KD </h6>
                             <h6 class="card-subtitle mb-2 text-price">{{ $events->eventPrice }}</h6>

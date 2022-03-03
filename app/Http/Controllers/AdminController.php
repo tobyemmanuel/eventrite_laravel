@@ -26,7 +26,12 @@ class AdminController extends Controller
         $event->eventLocation = $request->eventLocation;
         $event->eventDesc = $request->eventDesc;
         $event->refund = $request->refund;
+        $event->creator = Auth::user()->id;
         $event->save();
         return redirect()->back()->with('message','Event added successfully.');
+    }
+
+    public function manage_event_view(){
+        return view('user.manage_event');
     }
 }
