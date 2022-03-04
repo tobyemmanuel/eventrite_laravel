@@ -268,6 +268,7 @@
             <label for="email">Number of tickets:</label>
             <input type="text" class="form-control" placeholder="Enter number of tickets" id="regNoTickets">
         </div>
+        <input type="hidden" id="eventId" value="{{ $event_details->id }}">
 
       </div>
 
@@ -290,6 +291,7 @@
             let regName = $('#regName').val();
             let regEmail = $('#regEmail').val();
             let regNoTickets = $('#regNoTickets').val();
+            let eventId = $('#eventId').val();
             let _token = $('input[name=_token]').val();
                $.ajax({
                   url: "{{ route('event.reg') }}",
@@ -298,12 +300,13 @@
                      regName: regName,
                      regEmail: regEmail,
                      regNoTickets: regNoTickets,
+                     eventId: eventId,
                      _token: _token
                   },
                   success: function(result){
                      if(result.status == 1){
-                        $('#alert-msg').html(result.msg);
-
+                        $('#alert-msg').html(result.msg).removeClass('hide');
+                        $('#eventregistration').reset();
                      }
                   }});
                });

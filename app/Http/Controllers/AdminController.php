@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Eventreg;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -32,6 +34,12 @@ class AdminController extends Controller
     }
 
     public function manage_event_view(){
-        return view('user.manage_event');
+        $event_details = event::where('creator', '=', Auth::user()->id)->get();
+        for($x=0; $x < count($event_details); $x++){
+           $countreg = eventreg::where('eventId', '=', $event_details[$x]->id)->count();
+        $event_details[$x]->regcount = $countreg;
+        $event_details[$x]->eventLocation = (strlen($event_details[$x]->eventLocation)> 13)? substr($event_details[$x]->eventLocation, 0, 10).'...': $event_details[$x]->eventLocation;
+        }
+        return view('user.manage_event', compact('event_details'));
     }
 }

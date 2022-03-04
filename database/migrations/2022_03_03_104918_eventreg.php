@@ -18,6 +18,7 @@ class Eventreg extends Migration
             $table->string('regName')->nullable();
             $table->string('regEmail')->nullable();
             $table->string('regNoTickets')->nullable();
+            $table->string('eventId')->nullable();
             $table->timestamps();
         });
     }

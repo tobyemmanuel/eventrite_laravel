@@ -9,5 +9,5 @@ class Eventreg extends Model
 {
     use HasFactory;
     protected $table = 'eventreg';
-    protected $fillable = ['regName', 'regEmail', 'regNoTickets'];
+    protected $fillable = ['regName', 'regEmail', 'regNoTickets', 'eventId'];
 }

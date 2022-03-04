@@ -35,6 +35,7 @@ class HomeController extends Controller
         $eventreg->regName = $request->regName;
         $eventreg->regEmail = $request->regEmail;
         $eventreg->regNoTickets = $request->regNoTickets;
+        $eventreg->eventId = $request->eventId;
         $eventreg->save();
         $data = [
             'status' => '1',

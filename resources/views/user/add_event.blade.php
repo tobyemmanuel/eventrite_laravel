@@ -99,7 +99,7 @@
                       </div>
                       <div class="form-check form-check-flat form-check-primary">
                         <label class="form-check-label">
-                          <input required type="checkbox" class="form-check-input required" value="1" name="refund" id="refund"> Refund supported </label>
+                          <input  type="checkbox" class="form-check-input required" value="1" name="refund" id="refund"> Refund supported </label>
                       </div>
                                  
                      <button type="submit" class="btn btn-primary me-2">Submit</button>
